@@ -12,7 +12,7 @@
         padding: 0px;
     }
 
-    body {
+    html {
         height: 100vh;
     }
 
@@ -24,13 +24,13 @@
     tr,
     td,
     th {
-        border: 1px solid #000000;
+        border: 1px solid #14ad0f;
     }
 
     #add-task {
-        background-color: #e90b0b;
-        colour: #e0a5a5;
-        border-right: 500px;
+        background-color: rgb(34, 145, 20);
+        color: #e2dede;
+        border-right: 50px;
         padding: 20px;
     }
 
@@ -45,16 +45,15 @@
 
     .table-box {
         height: 100vh;
-
     }
 </style>
 
 <body>
-    <div class="box">
-        <input name="task-name" id="task-name" placeholder="new task-name" />
-        <button id="add-task"> Add Task</button>
+    <div class="box task-box">
+        <input name="task-name " id="task-name" onchange="addTask()" placeholder="New Task" />
+        <button id="add-task">Add Task</button>
     </div>
-    <div class="box table box">
+    <div class="box table-box">
         <table>
             <tr>
                 <th>Task Name</th>
@@ -63,17 +62,34 @@
             </tr>
             <tr>
                 <td></td>
-                <td></td>
-                <td></td>
+                <td><button>complete</button></td>
+                <td><button>Delete</button></td>
             </tr>
+        </table>
     </div>
-    </table>
 </body>
 <script>
+    let button = document.getElementById("add-task");
+    let input = document.getElementById("task-name");
+    let inputvalue;
+    let tasks = [];
+    let table = document.querySelector("tbody")
 
-let button= document.getElementById("add-task");
-button.addEventListener("click", function(  ))
-localStorage.setItem('')
+    function addTask() {
+        inputvalue = input.value;
+        tasks.push(inputvalue)
+    }
+
+    button.addEventListener("click", function () {
+        localStorage.setItem("allTasks", JSON.stringify(task))
+        localStorage.setItem("taskNumber", tasks.length)
+    })
+    table.insertAdjacentElementHTML("beforeend",
+        `
+      <tr>
+          <td>$(inputvalue)</td>
+               <td><button>complete</button></td>
+            <td><button>Delete</button></td>  </tr>`)
 </script>
 
 </html>
